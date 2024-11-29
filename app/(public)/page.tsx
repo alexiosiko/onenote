@@ -1,12 +1,12 @@
 "use client";
-import { useUser, UserButton, SignInButton } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Note } from "@/lib/types";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Home() {
 const [notesData, setNotesData] = useState<Note[] | null | undefined>(undefined);
@@ -39,12 +39,8 @@ return (
 			<p className="text-5xl">Notes</p>
 			<Input className="max-w-48" placeholder="Search my notes" />
 		</div>
-		<div className="flex flex-col gap-2">
-			<p>My Notes</p>
-			<Button variant="secondary" onClick={() => router.push('/note')}>Create Note</Button>
-		</div>
-		{/* <div className="w-48 h-screen flex flex-col p-2 gap-4">
-			<Button onClick={() => router.push('/note')}>New Note</Button>
+		<Button variant="default" onClick={() => router.push('/note')}>Create Note</Button>
+		<div className="w-full flex flex-col py-4 gap-4">
 			{notesData && notesData.map((note) => 
 				<div onClick={() => router.push(`/note/${note._id.toString()}`)} className="hover:cursor-pointer hover:bg-background p-2" key={note._id.toString()}>{note.title}</div>
 			)}
@@ -57,10 +53,6 @@ return (
 				</>
 			}
 		</div>
-		<div className="bg-background flex-grow p-4">
-		{user.isSignedIn ? <UserButton /> : <SignInButton />}
-
-		</div> */}
 	</div>
 );
 }

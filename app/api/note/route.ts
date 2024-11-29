@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
 	try {
-		let noteId = req.nextUrl.searchParams.get('noteId');
+		const noteId = req.nextUrl.searchParams.get('noteId');
 		let _id;
 		if (noteId == null)
 			_id = new ObjectId();
@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
 
 		return NextResponse.json({ message: "Worked", note: note}, { status: 200});
 		
-	} catch (e: any) {
+	} catch (e: unknown) {
 		console.error(e);
 		return NextResponse.json({ message: "Fail"}, { status: 500 });
 	}
@@ -68,7 +68,7 @@ export async function PUT(req: NextRequest) {
 			: "Note updated successfully";
 
 		return NextResponse.json({ message }, { status: 200 });
-	} catch (e: any) {
+	} catch (e: unknown) {
 		console.error(e);
 		return NextResponse.json({ message: "Fail" }, { status: 500 });
 	}
@@ -84,7 +84,8 @@ export async function DELETE(req: NextRequest) {
 		const notes = db.collection('notes');
 		await notes.deleteOne({ _id: new ObjectId(noteId)});
 		return NextResponse.json({ "message": "Deleted note"}, { status: 200 });
-	} catch (e: any) {
-		return NextResponse.json({ "message": "Server error"}, { status: 500 });
+	} catch (e: unknown) {
+		console.error(e);
+		return NextResponse.json({ "message": e}, { status: 500 });
 	}
 }

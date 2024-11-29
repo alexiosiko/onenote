@@ -1,7 +1,6 @@
 import React from 'react'
-import { Card, CardContent, CardHeader } from '../ui/card'
-import { FaBucket } from 'react-icons/fa6'
-import { CanvasSettings } from '@/app/(protected)/note/[id]/page'
+import { Card, CardContent } from '../ui/card'
+import { CanvasSettings } from '@/lib/types';
 
 const colors = [
 	'red',

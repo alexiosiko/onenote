@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from 'next/font/google'
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ToastProvider } from "@/components/ui/toast";
+import { Toaster } from "@/components/ui/toaster";
 
 const font = Poppins({
 	subsets: ['latin'],
@@ -26,7 +26,7 @@ export default function RootLayout({
 			<body
 				className={`${font.className} overflow-hidden bg-secondary antialiased`}>
 				{children}
-				<ToastProvider />
+				<Toaster />
 			</body>
 		</html>
 	</ClerkProvider>

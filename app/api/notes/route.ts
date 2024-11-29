@@ -11,7 +11,7 @@ export async function GET() {
 		const db = await dbPromise();
 		const notes = await db.collection("notes").find({ ownerId: userId }).toArray();
 		return NextResponse.json({ message: "Fetched notes", notes}, { status: 200 });
-	} catch (e: any) {
+	} catch (e: unknown) {
 		console.error(e);
 		return NextResponse.json({ message: "Fail"}, { status: 500 });
 	}

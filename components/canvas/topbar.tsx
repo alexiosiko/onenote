@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { FaRedo, FaUndo, FaSave, FaHome } from 'react-icons/fa';
-import { FaPencil } from "react-icons/fa6";
+import { FaUndo, FaSave, FaHome, FaRedo } from 'react-icons/fa';
 import ColorPicker from './colorpicker';
 import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
@@ -43,6 +42,7 @@ export default function TopBar({ handleSave, setCanvasSettings, canvasSettings, 
 			<div className="flex gap-8 justify-end">
 				<FaSave onClick={handleSave} className="hover:cursor-pointer" size={32} />
 				<FaUndo onClick={undo} className="hover:cursor-pointer" size={32} />
+				<FaRedo onClick={redo} className="hover:cursor-pointer" size={32} />
 				<Delete noteId={note?._id as unknown as string | null} />
 			</div>
 

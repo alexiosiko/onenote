@@ -7,19 +7,6 @@ export type Point = {
 x: number;
 y: number;
 }
-/*
-	strokeProperties: {
-		size: 6,
-		thinning: 0.2,
-		color: 'black',
-		smoothing: 1,
-		streamline: 1,
-		start: { cap: true },
-		end: { cap: true },
-	}
-*/
-
-
 
 export default function PerfectFreehandCanvas({ strokes, addStroke, setStrokes, canvasSettings }: {
 	strokes: Stroke[],

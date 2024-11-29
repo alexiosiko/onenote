@@ -27,14 +27,18 @@ export default function Delete({ noteId }: {
 			return;
 		}
 		try {
-			const res = await axios.delete('/api/note', {
+			await axios.delete('/api/note', {
 				params: { noteId: noteId }
 			});
 			toast({
 				title: "Note deleted."
 			})
 			router.push('/'); // Go home
-		} catch (e: any) {
+		} catch (e: unknown) {
+			toast({
+				title: "Server error",
+				variant: "destructive",
+			});
 			console.error(e);
 		}
 	}

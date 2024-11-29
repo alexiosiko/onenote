@@ -4,23 +4,12 @@ import PerfectFreehandCanvas from '@/components/canvas/canvas';
 import TopBar from '@/components/canvas/topbar';
 import UseNote from '@/components/canvas/useNote';
 import useUndoRedo from '@/components/canvas/useundoredo';
-import { CanvasSettings } from '@/lib/types';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 
 export default function Page() {
-	const [canvasSettings, setCanvasSettings] = useState<CanvasSettings>({
-		name: 'New Note',
-		size: 6,
-		thinning: 0.2,
-		color: 'black',
-		smoothing: 1,
-		streamline: 1,
-		start: { cap: true },
-		end: { cap: true },
-	});
-	const { setNote, handleSave, note, updateNoteStrokes } = UseNote(canvasSettings);
+	const { note, setNote, handleSave, updateNoteStrokes, setCanvasSettings, canvasSettings } = UseNote();
 	const { undo, redo, addStroke } = useUndoRedo({ setNote, note });
 
 	useEffect(() => {
@@ -37,7 +26,7 @@ export default function Page() {
 				name: fetchedNote.title,
 			}));
 			}
-		} catch (e: any) {
+		} catch (e: unknown) {
 			console.error('Error fetching note:', e);
 		}
 		};

@@ -1,11 +1,19 @@
 import { toast } from '@/hooks/use-toast';
 import { CanvasSettings, Note, Stroke } from '@/lib/types';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-export default function UseNote(
-	canvasSettings: CanvasSettings,
-) { 
+export default function UseNote() { 
+	const [canvasSettings, setCanvasSettings] = useState<CanvasSettings>({
+		name: 'Untitled 1',
+		size: 6,
+		thinning: 0.2,
+		color: 'black',
+		smoothing: 1,
+		streamline: 1,
+		start: { cap: true },
+		end: { cap: true },
+	});
 	const [note, setNote] = useState<Note | null>(null);
 	const updateNoteStrokes = (value: React.SetStateAction<Stroke[]>) =>
 		setNote((prevNote) =>
@@ -30,14 +38,18 @@ export default function UseNote(
 			};
 
 
-			const res = await axios.put('/api/note', {
+			await axios.put('/api/note', {
 				note: updatedNote,
 			});
 			toast({
 				title: "Note saved."
 			})
 			
-		} catch (e: any) {
+		} catch (e: unknown) {
+			toast({
+				title: "Server error",
+				variant: "destructive",
+			});
 			console.error('Error saving note:', e);
 		}
 	};
@@ -46,5 +58,7 @@ export default function UseNote(
 		note,
 		setNote,
 		updateNoteStrokes,
+		canvasSettings,
+		setCanvasSettings
 	}
 }

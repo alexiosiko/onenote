@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Button } from '../ui/button';
-import { useUser, useSignIn, UserProfile, SignInButton, UserButton } from '@clerk/nextjs';
+import { useUser, SignInButton, UserButton } from '@clerk/nextjs';
 
 export default function NavBar() {
 const { isSignedIn } = useUser();
