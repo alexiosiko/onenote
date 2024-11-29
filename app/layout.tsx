@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react"
 
 const font = Poppins({
 	subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
 				className={`${font.className} overflow-hidden bg-secondary antialiased`}>
 				{children}
 				<Toaster />
+				<Analytics />
 			</body>
 		</html>
 	</ClerkProvider>
