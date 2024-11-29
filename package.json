@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+	"postbuild": "next-sitemap"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.5.1",
@@ -25,6 +26,7 @@
     "lucide-react": "^0.460.0",
     "mongodb": "^6.11.0",
     "next": "15.0.3",
+    "next-sitemap": "^4.2.3",
     "perfect-freehand": "^1.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
