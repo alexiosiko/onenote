@@ -1,21 +1,16 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-// Match "/(protected)" and all its children or subchildren
-const isProtectedRoute = createRouteMatcher(["/note(.*)"]);
+const isProtectedRoute = createRouteMatcher(['/note(.*)'])
 
-export default clerkMiddleware(async (auth: any, req) => {
-  // Apply authentication logic only for protected routes
-  if (isProtectedRoute(req)) {
-    // Protect the route: require the user to be signed in
-    return auth.protect();
-  }
-});
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) await auth.protect()
+})
 
 export const config = {
   matcher: [
-    // Protect all routes under "/protected/*"
-    "/protected/:path*",
-    // Skip Next.js internals and static files
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
   ],
-};
+}
