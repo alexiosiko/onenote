@@ -1,6 +1,6 @@
 {
-	"name": "OneNote",
-	"short_name": "OneNte",
+	"name": "OneNotee",
+	"short_name": "OneNotee",
 	"description": "A note taking app!",
 	"start_url": "/",
 	"display": "standalone",

@@ -12,9 +12,9 @@ const font = Poppins({
 
 import type { Metadata, Viewport } from "next";
 
-const APP_NAME = "OneNote";
-const APP_DEFAULT_TITLE = "OneNote";
-const APP_TITLE_TEMPLATE = "%s - OneNote";
+const APP_NAME = "OneNotee";
+const APP_DEFAULT_TITLE = "OneNotee";
+const APP_TITLE_TEMPLATE = "%s - OneNotee";
 const APP_DESCRIPTION = "Note taking app!";
 
 export const metadata: Metadata = {
