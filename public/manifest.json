@@ -1,7 +1,7 @@
 {
-	"name": "Your App Name",
-	"short_name": "AppShortName",
-	"description": "Description of your app",
+	"name": "OneNote",
+	"short_name": "OneNte",
+	"description": "A note taking app!",
 	"start_url": "/",
 	"display": "standalone",
 	"background_color": "#ffffff",
