@@ -1,23 +1,22 @@
 {
-	"name": "OneNote",
-	"short_name": "OneNote",
-	"description": "A drawing board you can take notes on",
+	"name": "Your App Name",
+	"short_name": "AppShortName",
+	"description": "Description of your app",
 	"start_url": "/",
 	"display": "standalone",
 	"background_color": "#ffffff",
 	"theme_color": "#000000",
 	"icons": [
-  {
-    "src": "/icon.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  },
-  {
-    "src": "/icon.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }
-]
-
+	  {
+		"src": "/icon.png",
+		"sizes": "192x192",
+		"type": "image/png"
+	  },
+	  {
+		"src": "/icon.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	  }
+	]
   }
   

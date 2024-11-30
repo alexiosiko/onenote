@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
-const withPWA = require('next-pwa')({
-	dest: 'public', // Destination folder for service worker and PWA files
+const withPWA = require("@ducanh2912/next-pwa").default({
+	dest: 'public',
 	disable: process.env.NODE_ENV === 'development', // Disable PWA in development mode
-  });
+});
   
   const nextConfig = {
 	webpack: (config: any) => {
@@ -15,4 +15,6 @@ const withPWA = require('next-pwa')({
   };
   
   module.exports = withPWA(nextConfig);
+  
+
   
